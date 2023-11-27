@@ -30,8 +30,10 @@ def play_game():
         
         if result == "Player wins!":
             player_score += 1
+            print(f"Current scores: Player : {player_score}, Computer : {computer_score}")
         elif result == "Computer wins!":
             computer_score += 1
+            print(f"Current scores: Player : {player_score}, Computer : {computer_score}")
     
     print("Game over!")
     print(f"Player score: {player_score}")
