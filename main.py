@@ -29,10 +29,14 @@ def play_game():
         print(result)
         
         if result == "Player wins!":
-            player_score += 1
+            player_score += 10
             print(f"Current scores: Player : {player_score}, Computer : {computer_score}")
         elif result == "Computer wins!":
-            computer_score += 1
+            computer_score += 10
+            print(f"Current scores: Player : {player_score}, Computer : {computer_score}")
+        elif result == "It's a tie!":
+            player_score += 5
+            computer_score += 5
             print(f"Current scores: Player : {player_score}, Computer : {computer_score}")
     
     print("Game over!")
