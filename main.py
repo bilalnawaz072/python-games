@@ -16,7 +16,8 @@ def determine_winner(player_choice, computer_choice):
 def play_game():
     player_score = 0
     computer_score = 0
-    
+    tie_counter = 0
+
     while True:
         player_choice = input("Enter rock, paper, or scissors (or 'quit' to exit): ").lower()
         
@@ -35,9 +36,14 @@ def play_game():
             computer_score += 10
             print(f"Current scores: Player : {player_score}, Computer : {computer_score}")
         elif result == "It's a tie!":
+            tie_counter += 1
             player_score += 5
             computer_score += 5
             print(f"Current scores: Player : {player_score}, Computer : {computer_score}")
+        
+        if tie_counter == 3:
+            print("It has been a tie 3 times.Quitting game...")
+            break
     
     print("Game over!")
     print(f"Player score: {player_score}")
