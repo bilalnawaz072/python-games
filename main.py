@@ -14,11 +14,28 @@ def determine_winner(player_choice, computer_choice):
         return "Computer wins!"
 
 def play_game():
-    player_choice = input("Enter rock, paper, or scissors: ").lower()
-    computer_choice = get_computer_choice()
-    print(f"Computer chose {computer_choice}")
-    result = determine_winner(player_choice, computer_choice)
-    print(result)
+    player_score = 0
+    computer_score = 0
+    
+    while True:
+        player_choice = input("Enter rock, paper, or scissors (or 'quit' to exit): ").lower()
+        
+        if player_choice == 'quit':
+            break
+        
+        computer_choice = get_computer_choice()
+        print(f"Computer chose {computer_choice}")
+        result = determine_winner(player_choice, computer_choice)
+        print(result)
+        
+        if result == "Player wins!":
+            player_score += 1
+        elif result == "Computer wins!":
+            computer_score += 1
+    
+    print("Game over!")
+    print(f"Player score: {player_score}")
+    print(f"Computer score: {computer_score}")
 
 if __name__ == "__main__":
     play_game()
