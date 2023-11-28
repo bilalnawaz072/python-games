@@ -25,6 +25,7 @@ def play_game(difficulty_level):
     computer_score = 0
     tie_counter = 0
     score_increment = {"easy": 5, "medium": 10, "hard": 15, "expert": 20}
+    overall_winner = None
 
     while True:
         start_time = time.time()
@@ -62,6 +63,19 @@ def play_game(difficulty_level):
             print("Game over!")
             print(f"Player score: {player_score}")
             print(f"Computer score: {computer_score}")
+            break
+
+        if player_score >= 50 and player_score > computer_score:
+            print("Player wins the overall game!")
+            overall_winner = "Player"
+            break
+        elif computer_score >= 50 and computer_score > player_score:
+            print("Computer wins the overall game!")
+            overall_winner = "Computer"
+            break
+        elif player_score == computer_score:
+            print("TNo overall winner!")
+            overall_winner = "Tie"
             break
 
    
