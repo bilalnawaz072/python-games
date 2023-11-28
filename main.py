@@ -25,7 +25,6 @@ def play_game(difficulty_level):
     computer_score = 0
     tie_counter = 0
     score_increment = {"easy": 5, "medium": 10, "hard": 15, "expert": 20}
-    overall_winner = None
 
     while True:
         start_time = time.time()
@@ -54,8 +53,8 @@ def play_game(difficulty_level):
             print(f"Current scores: Player : {player_score}, Computer : {computer_score}")
         elif result == "It's a tie!":
             tie_counter += 1
-            player_score += score_increment[difficulty_level] 
-            computer_score += score_increment[difficulty_level] 
+            player_score += score_increment[difficulty_level]
+            computer_score += score_increment[difficulty_level]
             print(f"Current scores: Player : {player_score}, Computer : {computer_score}")
 
         if tie_counter == 3:
@@ -65,21 +64,20 @@ def play_game(difficulty_level):
             print(f"Computer score: {computer_score}")
             break
 
-        if player_score >= 50 and player_score > computer_score:
+        if player_score >= 50 or player_score > computer_score and tie_counter == 3:
             print("Player wins the overall game!")
-            overall_winner = "Player"
-            break
-        elif computer_score >= 50 and computer_score > player_score:
+            return "Player"
+        elif computer_score >= 50 or computer_score > player_score and tie_counter == 3:
             print("Computer wins the overall game!")
-            overall_winner = "Computer"
-            break
-        elif player_score == computer_score:
-            print("TNo overall winner!")
-            overall_winner = "Tie"
-            break
+            return "Computer"
 
-   
+        elif player_score == computer_score and tie_counter == 3:
+            print("No overall winner!")
+            return "Tie"
+
+
 
 if __name__ == "__main__":
     difficulty_level = input("Choose your difficulty level (easy/medium/hard/expert): ")
-    play_game(difficulty_level)
+    overall_winner = play_game(difficulty_level)
+    print(f"The overall winner is {overall_winner}")
